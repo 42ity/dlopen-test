@@ -1,22 +1,26 @@
-cmake_minimum_required(VERSION 3.0)
+cmake_minimum_required(VERSION 3.13)
+cmake_policy(VERSION 3.13)
+
+find_package(fty-cmake PATHS ${CMAKE_BINARY_DIR})
 
 project(dlopen-test
-        VERSION 1.0.0 )
-
-set(PROJECT_DESCRIPTION "Try to load lib")
+        DESCRIPTION "Test to load a dynlib using dlopen()"
+        VERSION 1.0.0
+)
 
 include(GNUInstallDirs)
 
-#create the header only library
-add_executable(${PROJECT_NAME}
-    src/dlopen-test.cpp
+#create the exe
+etn_target(exe ${PROJECT_NAME}
+    SOURCES
+        src/dlopen-test.cpp
+    USES_PRIVATE
+        ${CMAKE_DL_LIBS}
 )
 
-target_link_libraries(${PROJECT_NAME} PRIVATE ${CMAKE_DL_LIBS})
- 
-target_compile_features(${PROJECT_NAME} INTERFACE cxx_std_11)
-
-target_compile_options(${PROJECT_NAME} INTERFACE 
-    $<$<CXX_COMPILER_ID:MSVC>:/W4 /WX>
-    $<$<NOT:$<CXX_COMPILER_ID:MSVC>>:-Wall -Wextra -pedantic -Werror>
-)
+#target_link_libraries(${PROJECT_NAME} PRIVATE ${CMAKE_DL_LIBS})
+#target_compile_features(${PROJECT_NAME} INTERFACE cxx_std_11)
+#target_compile_options(${PROJECT_NAME} INTERFACE
+#    $<$<CXX_COMPILER_ID:MSVC>:/W4 /WX>
+#    $<$<NOT:$<CXX_COMPILER_ID:MSVC>>:-Wall -Wextra -pedantic -Werror>
+#)

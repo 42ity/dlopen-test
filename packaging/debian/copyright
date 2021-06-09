@@ -1,0 +1,14 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: dlopen-test
+
+Files: *
+Copyright: 2020- dlopen-test Developers <eatonproductfeedback@eaton.com>
+License: dlopen-test_license
+ Copyright (C) 2017 - 2020 Eaton.
+ .
+ This software is confidential and licensed under Eaton Proprietary License
+ (EPL or EULA).
+ This software is not authorized to be used, duplicated or disclosed to
+ anyone without the prior written permission of Eaton.
+ Limitations, restrictions and exclusions of the Eaton applicable standard
+ terms and conditions, such as its EPL and EULA, apply.
